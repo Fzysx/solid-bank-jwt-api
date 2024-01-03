@@ -1,0 +1,48 @@
+package kz.jusansingularity.springcore.solidbankapp2.service;
+
+import kz.jusansingularity.springcore.solidbankapp2.model.AccountType;
+import kz.jusansingularity.springcore.solidbankapp2.model.CLIUI;
+import org.springframework.stereotype.Component;
+import java.util.Scanner;
+
+@Component
+public class MyCLI implements CLIUI{
+    private Scanner scanner;
+    public MyCLI(Scanner scanner){
+
+        this.scanner = scanner;
+    }
+
+    public MyCLI(){
+        this.scanner = new Scanner(System.in);
+    }
+    @Override
+    public double requestClientAmount() throws Exception{
+        try {
+            return Double.parseDouble(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Number format error: " + e.getMessage());
+            throw e;
+        } catch (NullPointerException e) {
+            System.out.println("The string cannot be null: " + e.getMessage());
+            throw e;
+        }
+    }
+    
+    public Scanner getScanner() {
+        return scanner;
+    }
+    @Override
+    public String requestClientAccountNumber() { return String.valueOf(scanner.nextLine()); }
+    @Override
+    public AccountType requestAccountType() throws Exception{
+        try{
+            return AccountType.valueOf(scanner.nextLine());
+        } catch (IllegalArgumentException e){
+            System.out.println("Invalid account type value");
+            throw e;
+        }
+    }
+
+
+}
