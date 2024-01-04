@@ -1,5 +1,11 @@
 package kz.jusansingularity.springcore.solidbankapp2.model;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+@Getter
+@Setter
+@ToString
 public class Account {
     private AccountType accountType;
     private String id;
@@ -17,7 +23,7 @@ public class Account {
     }
 
 
-    @Override
+   /* @Override
     public String toString(){
         return "Account{" +
                 "accountType=" + accountType +
@@ -26,9 +32,9 @@ public class Account {
                 ", balance=" + balance +
                 ", withdrawAllowed=" + withdrawAllowed +
                 '}';
-    }
+    }*/
 
-    public String getClientID(){
+   /* public String getClientID(){
         return clientID;
     }
 
@@ -66,6 +72,6 @@ public class Account {
 
     public double getBalance() {
         return balance;
-    }
+    }*/
 
 }

@@ -3,20 +3,22 @@ import kz.jusansingularity.springcore.solidbankapp2.DAO.TransactionDAO;
 import kz.jusansingularity.springcore.solidbankapp2.model.AccountWithdraw;
 import kz.jusansingularity.springcore.solidbankapp2.model.DepositTransaction;
 import kz.jusansingularity.springcore.solidbankapp2.model.TransactionType;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class TransactionWithdraw {
     private static long id = 1;
-    AccountWithdrawService accountWithdrawService;
-    TransactionDAO transactionDAO;
+    private final AccountWithdrawService accountWithdrawService;
+    private final TransactionDAO transactionDAO;
 
-    @Autowired
+   /* @Autowired
     public TransactionWithdraw(AccountWithdrawService accountWithdrawService, TransactionDAO transactionDAO) {
         this.accountWithdrawService = accountWithdrawService;
         this.transactionDAO = transactionDAO;
-    }
+    }*/
 
     public void execute(AccountWithdraw account, double amount){
         double  balanceBeforeTransaction = account.getBalance();

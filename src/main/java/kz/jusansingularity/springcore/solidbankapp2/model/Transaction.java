@@ -1,5 +1,12 @@
 package kz.jusansingularity.springcore.solidbankapp2.model;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@ToString
+@Getter
+@Setter
 public class Transaction {
     private TransactionType transactionType;
     private String id;
@@ -28,7 +35,7 @@ public class Transaction {
     }
 
 
-    @Override
+    /*@Override
     public String toString() {
         return "Transaction{" +
                 "transactionType=" + transactionType +
@@ -39,9 +46,9 @@ public class Transaction {
                 ", balanceBeforeTransaction=" + balanceBeforeTransaction +
                 ", balanceAfterTransaction=" + balanceAfterTransaction +
                 '}';
-    }
+    }*/
 
-    public TransactionType getTransactionType() {
+   /* public TransactionType getTransactionType() {
         return transactionType;
     }
 
@@ -95,5 +102,5 @@ public class Transaction {
 
     public void setBalanceAfterTransaction(int balanceAfterTransaction) {
         this.balanceAfterTransaction = balanceAfterTransaction;
-    }
+    }*/
 }

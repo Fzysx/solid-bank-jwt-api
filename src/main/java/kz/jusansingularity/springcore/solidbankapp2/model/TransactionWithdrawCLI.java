@@ -2,21 +2,23 @@ package kz.jusansingularity.springcore.solidbankapp2.model;
 
 import kz.jusansingularity.springcore.solidbankapp2.service.AccountListingService;
 import kz.jusansingularity.springcore.solidbankapp2.service.TransactionWithdraw;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+@AllArgsConstructor
 public class TransactionWithdrawCLI{
     TransactionWithdraw transactionWithdraw;
     WithdrawDepositOperationCLIUI withdrawDepositOperationCLIUI;
     AccountListingService accountListing;
 
-    @Autowired
+    /*@Autowired
     public TransactionWithdrawCLI(TransactionWithdraw transactionWithdraw, WithdrawDepositOperationCLIUI withdrawDepositOperationCLIUI, AccountListingService accountListing) {
         this.transactionWithdraw = transactionWithdraw;
         this.withdrawDepositOperationCLIUI = withdrawDepositOperationCLIUI;
         this.accountListing = accountListing;
-    }
+    }*/
 
     public void withdrawMoney(String clientID) {
         boolean isPositive = false;

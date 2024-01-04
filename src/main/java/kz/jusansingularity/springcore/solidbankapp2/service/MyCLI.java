@@ -2,16 +2,14 @@ package kz.jusansingularity.springcore.solidbankapp2.service;
 
 import kz.jusansingularity.springcore.solidbankapp2.model.AccountType;
 import kz.jusansingularity.springcore.solidbankapp2.model.CLIUI;
+import lombok.Getter;
 import org.springframework.stereotype.Component;
 import java.util.Scanner;
 
+@Getter
 @Component
 public class MyCLI implements CLIUI{
     private Scanner scanner;
-    public MyCLI(Scanner scanner){
-
-        this.scanner = scanner;
-    }
 
     public MyCLI(){
         this.scanner = new Scanner(System.in);
@@ -28,10 +26,6 @@ public class MyCLI implements CLIUI{
             throw e;
         }
     }
-    
-    public Scanner getScanner() {
-        return scanner;
-    }
     @Override
     public String requestClientAccountNumber() { return String.valueOf(scanner.nextLine()); }
     @Override
@@ -43,6 +37,4 @@ public class MyCLI implements CLIUI{
             throw e;
         }
     }
-
-
 }

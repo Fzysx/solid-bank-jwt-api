@@ -4,20 +4,22 @@ import kz.jusansingularity.springcore.solidbankapp2.DAO.TransactionDAO;
 import kz.jusansingularity.springcore.solidbankapp2.model.Account;
 import kz.jusansingularity.springcore.solidbankapp2.model.DepositTransaction;
 import kz.jusansingularity.springcore.solidbankapp2.model.TransactionType;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class TransactionDeposit {
     private static long id = 1;
-    AccountDepositService accountDepositService;
-    TransactionDAO transactionDAO;
+    private final AccountDepositService accountDepositService;
+    private final TransactionDAO transactionDAO;
 
-    @Autowired
+   /* @Autowired
     public TransactionDeposit(AccountDepositService accountDepositService, TransactionDAO transactionDAO) {
         this.accountDepositService = accountDepositService;
         this.transactionDAO = transactionDAO;
-    }
+    }*/
 
     public void execute(Account account, double amount){
 

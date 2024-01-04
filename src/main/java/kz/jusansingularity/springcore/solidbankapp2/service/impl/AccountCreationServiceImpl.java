@@ -1,5 +1,6 @@
 package kz.jusansingularity.springcore.solidbankapp2.service.impl;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import kz.jusansingularity.springcore.solidbankapp2.DAO.AccountDAO;
@@ -12,13 +13,14 @@ import kz.jusansingularity.springcore.solidbankapp2.service.AccountListingServic
 
 
 @Service
+@RequiredArgsConstructor
 public class AccountCreationServiceImpl implements AccountCreationService{
-    AccountDAO accountDAO;
+    private final AccountDAO accountDAO;
 
-    @Autowired
+   /* @Autowired
     public AccountCreationServiceImpl(AccountDAO accountDAO){
         this.accountDAO = accountDAO;
-    }
+    }*/
 
     @Override
     public void create(AccountType accountType, long bankID, String clientID, long accountID){
