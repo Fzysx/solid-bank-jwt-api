@@ -29,6 +29,7 @@ public class TransactionWithdraw {
                 String.valueOf(id),
                 account.getClientID(),
                 amount, account.getId(),
+                account.getAccountType().getCode(),
                 balanceBeforeTransaction,
                 balanceAfterTransaction));
 

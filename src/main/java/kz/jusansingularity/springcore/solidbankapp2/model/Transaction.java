@@ -13,11 +13,12 @@ public class Transaction {
     private String clientID;
     private double amount;
     private String accountID;
+    private String accountType;
 
     private double balanceBeforeTransaction;
     private double  balanceAfterTransaction;
 
-    public Transaction(TransactionType transactionType, String id, String clientID, double amount, String accountID,
+    public Transaction(TransactionType transactionType, String id, String clientID ,double amount, String accountID, String accountType,
                        double balanceBeforeTransaction, double balanceAfterTransaction) {
         this.transactionType = transactionType;
 
@@ -28,6 +29,7 @@ public class Transaction {
         }
 
         this.clientID = clientID;
+        this.accountType = accountType;
         this.amount = amount;
         this.accountID = accountID;
         this.balanceBeforeTransaction = balanceBeforeTransaction;

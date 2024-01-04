@@ -6,9 +6,10 @@ public class WithdrawTransaction extends Transaction{
                                String clientID,
                                double amount,
                                String accountID,
+                               String accountType,
                                double balanceBeforeTransaction,
                                double balanceAfterTransaction) {
 
-        super(transactionType, id, clientID, amount, accountID, balanceBeforeTransaction, balanceAfterTransaction);
+        super(transactionType, id, clientID, amount, accountID, accountType, balanceBeforeTransaction, balanceAfterTransaction);
     }
 }
