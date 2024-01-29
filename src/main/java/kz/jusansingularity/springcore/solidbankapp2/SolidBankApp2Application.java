@@ -2,11 +2,11 @@ package kz.jusansingularity.springcore.solidbankapp2;
 
 
 import kz.jusansingularity.springcore.solidbankapp2.DAO.MemoryTransactionDAO;
-import kz.jusansingularity.springcore.solidbankapp2.DAO.TransactionDAO;
 import kz.jusansingularity.springcore.solidbankapp2.model.Transaction;
 import kz.jusansingularity.springcore.solidbankapp2.model.TransactionDepositCLI;
 import kz.jusansingularity.springcore.solidbankapp2.model.TransactionWithdrawCLI;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,10 +16,22 @@ import kz.jusansingularity.springcore.solidbankapp2.service.MyCLI;
 
 @SpringBootApplication
 public class SolidBankApp2Application implements CommandLineRunner {
-	@Autowired
-	private ApplicationContext context;
-	public static void main(String[] args) {
+	@Value("${help.message}")
+	String helpMessage;
 
+	@Value("${welcome.message}")
+	String welcomeMessage;
+
+	@Value("${enter.operation}")
+	String enterOperation;
+	private final ApplicationContext context;
+
+	@Autowired
+	public SolidBankApp2Application(ApplicationContext context) {
+		this.context = context;
+	}
+
+	public static void main(String[] args) {
 		SpringApplication.run(SolidBankApp2Application.class, args);
 	}
 
@@ -32,15 +44,16 @@ public class SolidBankApp2Application implements CommandLineRunner {
 		AccountBasicCLI accountBasicCLI = context.getBean(AccountBasicCLI.class);
 		TransactionDepositCLI transactionDepositCLI = context.getBean(TransactionDepositCLI.class);
 		TransactionWithdrawCLI transactionWithdrawCLI = context.getBean(TransactionWithdrawCLI.class);
+
 		MemoryTransactionDAO memoryTransactionDAO = context.getBean(MemoryTransactionDAO.class);
 
-		String helpMessage = "1 - show accounts\n2 - create account\n3 - deposit\n4 - withdraw\n5 - transfer\n6 - this message\n7 - exit\n";
-		System.out.printf("Welcome to CLI bank service\n");
-		System.out.printf("Enter operation number: \n");
-		System.out.printf(helpMessage);
+
+		System.out.println(welcomeMessage);
+		System.out.println(enterOperation);
+		System.out.println(helpMessage);
 
 		while(running){
-			System.out.printf("Enter operation number: \n");
+			System.out.print(enterOperation);
 			try {
 				switch(myCLI.getScanner().nextLine()){
 
@@ -62,7 +75,7 @@ public class SolidBankApp2Application implements CommandLineRunner {
 						break;
 
 					case "5":
-						for(Transaction transaction: memoryTransactionDAO.getTransactions()) {
+						for(Transaction transaction: memoryTransactionDAO.findAll()) {
 							System.out.println(transaction);
 						};
 						break;

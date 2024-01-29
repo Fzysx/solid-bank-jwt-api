@@ -1,22 +1,28 @@
 package kz.jusansingularity.springcore.solidbankapp2.DAO;
 
 import kz.jusansingularity.springcore.solidbankapp2.model.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class MemoryTransactionDAO implements TransactionDAO{
+@Transactional(readOnly = true)
+public class MemoryTransactionDAO {
 
-    private List<Transaction> transactions = new ArrayList<>();
-    @Override
-    public List<Transaction> getTransactions() {
-        return transactions;
+    private final TransactionDAO transactionDAO;
+    @Autowired
+    public MemoryTransactionDAO(TransactionDAO transactionDAO) {
+        this.transactionDAO = transactionDAO;
     }
 
-    @Override
-    public void addTransaction(Transaction transaction) {
-        transactions.add(transaction);
+    public List<Transaction> findAll()  {
+        return transactionDAO.findAll();
+    }
+
+    @Transactional
+    public void save(Transaction transaction){
+        transactionDAO.save(transaction);
     }
 }
