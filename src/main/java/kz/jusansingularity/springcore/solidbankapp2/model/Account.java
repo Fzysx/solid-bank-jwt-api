@@ -1,18 +1,39 @@
 package kz.jusansingularity.springcore.solidbankapp2.model;
 
+import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.util.List;
+
 @Getter
 @Setter
+@NoArgsConstructor
 @ToString
+@Entity
+@Table(name = "Account")
 public class Account {
-    private AccountType accountType;
+
+    @Id
+    @Column(name = "id")
     private String id;
+
+    @Enumerated(EnumType.STRING)
+    private AccountType accountType;
+
+    @Column(name = "client_id")
     private String clientID;
+
+    @Column(name = "balance")
     private double balance;
+
+    @Column(name = "is_withdraw_allowed")
     private boolean withdrawAllowed;
 
+    @OneToMany(mappedBy = "owner")
+    private List<Transaction> items;
 
     public Account(AccountType accountType, String id, String clientID, double balance, boolean withdrawAllowed){
         this.accountType = accountType;
@@ -20,5 +41,15 @@ public class Account {
         this.clientID = clientID;
         this.balance = balance;
         this.withdrawAllowed = withdrawAllowed;
+    }
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id='" + id + '\'' +
+                ", accountType=" + accountType +
+                ", clientID='" + clientID + '\'' +
+                ", balance=" + balance +
+                ", withdrawAllowed=" + withdrawAllowed +
+                '}';
     }
 }

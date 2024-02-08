@@ -15,7 +15,7 @@ public class MyCLI implements CLIUI{
         this.scanner = new Scanner(System.in);
     }
     @Override
-    public double requestClientAmount() throws Exception{
+    public double requestClientAmount() throws RuntimeException{
         try {
             return Double.parseDouble(scanner.nextLine());
         } catch (NumberFormatException e) {
@@ -29,7 +29,7 @@ public class MyCLI implements CLIUI{
     @Override
     public String requestClientAccountNumber() { return String.valueOf(scanner.nextLine()); }
     @Override
-    public AccountType requestAccountType() throws Exception{
+    public AccountType requestAccountType() throws IllegalArgumentException{
         try{
             return AccountType.valueOf(scanner.nextLine());
         } catch (IllegalArgumentException e){

@@ -1,6 +1,5 @@
 package kz.jusansingularity.springcore.solidbankapp2.DAO;
 
-import java.util.ArrayList;
 import java.util.List;
 import kz.jusansingularity.springcore.solidbankapp2.model.Account;
 import kz.jusansingularity.springcore.solidbankapp2.model.AccountType;

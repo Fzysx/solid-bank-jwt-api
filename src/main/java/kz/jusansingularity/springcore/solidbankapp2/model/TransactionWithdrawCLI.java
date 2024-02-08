@@ -3,7 +3,6 @@ package kz.jusansingularity.springcore.solidbankapp2.model;
 import kz.jusansingularity.springcore.solidbankapp2.service.AccountListingService;
 import kz.jusansingularity.springcore.solidbankapp2.service.TransactionWithdraw;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -30,7 +29,6 @@ public class TransactionWithdrawCLI{
                     if(accountWithdraw.getBalance() >= amount){
                         if (amount > 0) {
                             transactionWithdraw.execute(accountWithdraw, amount);
-
                             isPositive = true;
                         } else {
                             System.out.println("Please, input a positive Amount of money.");
