@@ -5,6 +5,7 @@ import java.util.List;
 import kz.jusansingularity.springcore.solidbankapp2.model.Account;
 import kz.jusansingularity.springcore.solidbankapp2.model.AccountType;
 import kz.jusansingularity.springcore.solidbankapp2.model.AccountWithdraw;
+import kz.jusansingularity.springcore.solidbankapp2.util.AccountNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -26,16 +27,26 @@ public class MemoryAccountDao implements AccountDAO{
     }
 
     @Override
-    public void createNewAccount(Account account){
+    public String createNewAccount(Account account){
         String sql = "INSERT INTO Account(id, account_type, client_id, balance, is_withdraw_allowed) VALUES ( ?, ?, ?, ?, ?)";
         jdbcTemplate.update(sql, account.getId() , account.getAccountType().getCode(), account.getClientID(), account.getBalance(), account.isWithdrawAllowed());
-        System.out.println("Bank account created successfully");
+        System.out.println("Bank account id = " + account.getId() + " created successfully");
+        return account.getId();
     }
     @Override
     public void updateAccount(Account account){
         String sql = "UPDATE Account SET balance = ? WHERE id = ?";
         jdbcTemplate.update(sql, account.getBalance(), account.getId());
+        System.out.println("Bank account id = " + account.getId() + " updated successfully");
     }
+
+    @Override
+    public void removeAccount(Account account) {
+        String sql = "DELETE FROM Account WHERE id = ?";
+        jdbcTemplate.update(sql, account.getId());
+        System.out.println("Bank removed updated successfully");
+    }
+
     @Override
     public List<Account> getClientAccountsByType(String clientID, AccountType accountType){
         return null;
@@ -50,7 +61,7 @@ public class MemoryAccountDao implements AccountDAO{
             Account account = accounts.get(0);
             return (AccountWithdraw) account;
         } else {
-            return null;
+            throw new AccountNotFoundException();
         }
     }
     @Override
@@ -59,10 +70,10 @@ public class MemoryAccountDao implements AccountDAO{
         String sql = "SELECT * FROM Account WHERE client_id = ? AND id = ?";
         accounts = jdbcTemplate.query(sql, new Object[]{clientID, accountID}, new AccountMapper());
 
-        if (accounts.isEmpty()) {
-            return null;
-        } else {
+        if (!accounts.isEmpty()) {
             return accounts.get(0);
+        } else {
+            throw new AccountNotFoundException();
         }
     }
 }

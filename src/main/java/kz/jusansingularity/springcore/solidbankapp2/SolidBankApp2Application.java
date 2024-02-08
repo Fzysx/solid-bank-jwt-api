@@ -5,6 +5,7 @@ import kz.jusansingularity.springcore.solidbankapp2.DAO.MemoryTransactionDAO;
 import kz.jusansingularity.springcore.solidbankapp2.model.Transaction;
 import kz.jusansingularity.springcore.solidbankapp2.model.TransactionDepositCLI;
 import kz.jusansingularity.springcore.solidbankapp2.model.TransactionWithdrawCLI;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -13,6 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import kz.jusansingularity.springcore.solidbankapp2.model.AccountBasicCLI;
 import kz.jusansingularity.springcore.solidbankapp2.service.MyCLI;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class SolidBankApp2Application implements CommandLineRunner {
@@ -31,6 +33,10 @@ public class SolidBankApp2Application implements CommandLineRunner {
 		this.context = context;
 	}
 
+	@Bean
+	public ModelMapper modelMapper(){
+		return new ModelMapper();
+	}
 	public static void main(String[] args) {
 		SpringApplication.run(SolidBankApp2Application.class, args);
 	}

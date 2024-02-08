@@ -13,9 +13,11 @@ public class BankCore {
     private long lastAccountNumber = 1;
     private final AccountCreationService accountCreation;
 
-    public void createNewAccount(AccountType accountType, String clientID){
-        accountCreation.create(accountType, id, clientID, lastAccountNumber);
+    public String createNewAccount(AccountType accountType, String clientID){
+        String accountId = accountCreation.create(accountType, id, clientID, lastAccountNumber);
         incrementLastAccountNumber();
+
+        return accountId;
     }
     private void incrementLastAccountNumber(){
         lastAccountNumber++;

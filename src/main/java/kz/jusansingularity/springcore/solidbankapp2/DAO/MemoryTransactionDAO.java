@@ -21,6 +21,10 @@ public class MemoryTransactionDAO {
         return transactionDAO.findAll();
     }
 
+    public List<Transaction> findByAccountId(String accountID){
+        return transactionDAO.findByAccountID(accountID);
+    }
+
     @Transactional
     public void save(Transaction transaction){
         transactionDAO.save(transaction);

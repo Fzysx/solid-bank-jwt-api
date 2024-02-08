@@ -18,5 +18,5 @@ CREATE TABLE Transaction
     balance_before DOUBLE,
     balance_after DOUBLE,
     CONSTRAINT PK_Invoice PRIMARY KEY  (id),
-    FOREIGN KEY (account_id) REFERENCES Account (id)
+    FOREIGN KEY (account_id) REFERENCES Account (id) ON DELETE SET NULL
 );
