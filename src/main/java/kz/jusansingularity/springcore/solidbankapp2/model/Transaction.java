@@ -20,7 +20,7 @@ public class Transaction {
 
     @ManyToOne
     @JoinColumn(name = "account_id", referencedColumnName = "id")
-    private Account owner;
+    private Account ownerAccount;
 
     @Column(name = "client_id")
     private String clientID;
@@ -38,7 +38,7 @@ public class Transaction {
     @Column(name = "balance_after")
     private double  balanceAfterTransaction;
 
-    public Transaction(TransactionType transactionType, String id, String clientID ,double amount, Account owner,
+    public Transaction(TransactionType transactionType, String id, String clientID ,double amount, Account ownerAccount,
                        double balanceBeforeTransaction, double balanceAfterTransaction) {
         this.transactionType = transactionType;
 
@@ -50,7 +50,7 @@ public class Transaction {
 
         this.clientID = clientID;
         this.amount = amount;
-        this.owner = owner;
+        this.ownerAccount = ownerAccount;
         this.balanceBeforeTransaction = balanceBeforeTransaction;
         this.balanceAfterTransaction = balanceAfterTransaction;
     }

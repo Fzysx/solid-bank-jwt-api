@@ -15,12 +15,14 @@ public class AccountBasicCLI {
     private BankCore bankCore;
     private AccountListingService accountListing;
 
-    public void createAccountRequest(String clientID) {
+    public String createAccountRequest(String clientID) {
+        String accountId = "";
         try {
-            bankCore.createNewAccount(createAccountOperationUI.requestAccountType(), clientID);
+            accountId = bankCore.createNewAccount(createAccountOperationUI.requestAccountType(), clientID);
         } catch(Exception e){
             System.out.println("Repeat the operations, please.");
         }
+        return accountId;
     }
 
     public void getAccounts(String clientID){

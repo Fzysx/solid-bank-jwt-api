@@ -18,13 +18,16 @@ public class AccountCreationServiceImpl implements AccountCreationService{
     private final AccountDAO accountDAO;
 
     @Override
-    public void create(AccountType accountType, long bankID, String clientID, long accountID){
+    public String create(AccountType accountType, long bankID, String clientID, long accountID){
+        String accountId = "";
         if(accountType.getCode().equals("FIXED")){
-            accountDAO.createNewAccount(new FixedAccount(accountType, Long.toString(accountID), clientID, 0,  false));
+            accountId = accountDAO.createNewAccount(new FixedAccount(accountType, Long.toString(accountID), clientID, 0,  false));
         } else if(accountType.getCode().equals("SAVING")){
-            accountDAO.createNewAccount(new SavingAccount(accountType, Long.toString(accountID), clientID, 0,  true));
+            accountId = accountDAO.createNewAccount(new SavingAccount(accountType, Long.toString(accountID), clientID, 0,  true));
         } else if(accountType.getCode().equals("CHECKING")){
-            accountDAO.createNewAccount(new CheckingAccount(accountType, Long.toString(accountID), clientID, 0,  true));
+            accountId = accountDAO.createNewAccount(new CheckingAccount(accountType, Long.toString(accountID), clientID, 0,  true));
         }
+
+        return accountId;
     }
 }

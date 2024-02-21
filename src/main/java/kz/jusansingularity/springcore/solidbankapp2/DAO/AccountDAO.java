@@ -7,8 +7,9 @@ import kz.jusansingularity.springcore.solidbankapp2.model.AccountWithdraw;
 
 public interface AccountDAO {
     List<Account> getClientAccounts(String clientID);
-    void createNewAccount(Account account);
+    String createNewAccount(Account account);
     void updateAccount(Account account);
+    void removeAccount(Account account);
     List<Account> getClientAccountsByType(String clientID, AccountType accountType);
     AccountWithdraw getClientWithdrawAccount(String clientID, String accountID);
     Account getClientAccount(String clientID, String accountID);

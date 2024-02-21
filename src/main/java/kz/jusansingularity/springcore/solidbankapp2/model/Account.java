@@ -1,5 +1,6 @@
 package kz.jusansingularity.springcore.solidbankapp2.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,8 +33,8 @@ public class Account {
     @Column(name = "is_withdraw_allowed")
     private boolean withdrawAllowed;
 
-    @OneToMany(mappedBy = "owner")
-    private List<Transaction> items;
+    @OneToMany(mappedBy = "ownerAccount")
+    private List<Transaction> transactions;
 
     public Account(AccountType accountType, String id, String clientID, double balance, boolean withdrawAllowed){
         this.accountType = accountType;
