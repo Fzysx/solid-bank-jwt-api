@@ -19,11 +19,15 @@ public class TransactionDeposit {
         double  balanceBeforeTransaction = account.getBalance();
         accountDepositService.deposit(account, amount);
         double  balanceAfterTransaction = account.getBalance();
+        String accountFromId = "-";
+        String accountToId = "-";
 
         memoryTransactionDAO.save(new Transaction(TransactionType.DEPOSIT,
                 String.valueOf(id),
-                account.getClientID(),
-                amount, account,
+                amount,
+                account,
+                accountFromId,
+                accountToId,
                 balanceBeforeTransaction,
                 balanceAfterTransaction));
 

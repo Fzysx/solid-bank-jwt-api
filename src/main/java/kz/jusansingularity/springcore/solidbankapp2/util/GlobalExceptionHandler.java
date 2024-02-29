@@ -23,7 +23,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler
     public ResponseEntity<AccountErrorResponse> handleException(AccountNotFoundException ex) {
         AccountErrorResponse response = new AccountErrorResponse(
-                "Account with this ID not found", System.currentTimeMillis()
+                "Account with this id = " + ex.getAccountID() + "is not found", System.currentTimeMillis()
         );
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }

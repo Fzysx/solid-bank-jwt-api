@@ -1,9 +1,6 @@
 package kz.jusansingularity.springcore.solidbankapp2.DTO;
 
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import kz.jusansingularity.springcore.solidbankapp2.util.AccountType;
 import lombok.Getter;
 import lombok.Setter;

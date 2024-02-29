@@ -4,7 +4,6 @@ import kz.jusansingularity.springcore.solidbankapp2.DAO.AccountDAO;
 import kz.jusansingularity.springcore.solidbankapp2.model.Account;
 import kz.jusansingularity.springcore.solidbankapp2.service.AccountDepositService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
