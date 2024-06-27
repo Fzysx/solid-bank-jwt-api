@@ -10,7 +10,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @Entity
-@Table(name = "Transaction")
+@Table(name = "Transactions")
 @NoArgsConstructor
 public class Transaction {
 
@@ -22,9 +22,6 @@ public class Transaction {
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account ownerAccount;
 
-    @Column(name = "client_id")
-    private String clientID;
-
     @Column(name = "amount")
     private double amount;
 
@@ -32,13 +29,19 @@ public class Transaction {
     @Column(name = "transaction_type")
     private TransactionType transactionType;
 
+    @Column(name = "account_from_id")
+    private String accountFromId;
+
+    @Column(name = "account_to_id")
+    private String accountToId;
+
     @Column(name = "balance_before")
     private double balanceBeforeTransaction;
 
     @Column(name = "balance_after")
     private double  balanceAfterTransaction;
 
-    public Transaction(TransactionType transactionType, String id, String clientID ,double amount, Account ownerAccount,
+    public Transaction(TransactionType transactionType, String id, double amount, Account ownerAccount, String accountFromId, String accountToId,
                        double balanceBeforeTransaction, double balanceAfterTransaction) {
         this.transactionType = transactionType;
 
@@ -46,11 +49,13 @@ public class Transaction {
             this.id = String.format("%01d%08d", 1, Integer.valueOf(id));
         } else if(transactionType.equals(TransactionType.WITHDRAW)){
             this.id = String.format("%01d%08d", 2, Integer.valueOf(id));
+        } else if(transactionType.equals(TransactionType.TRANSFER)){
+            this.id = String.format("%01d%08d", 3, Integer.valueOf(id));
         }
-
-        this.clientID = clientID;
         this.amount = amount;
         this.ownerAccount = ownerAccount;
+        this.accountFromId = accountFromId;
+        this.accountToId = accountToId;
         this.balanceBeforeTransaction = balanceBeforeTransaction;
         this.balanceAfterTransaction = balanceAfterTransaction;
     }

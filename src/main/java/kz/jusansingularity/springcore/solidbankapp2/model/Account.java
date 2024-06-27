@@ -1,6 +1,5 @@
 package kz.jusansingularity.springcore.solidbankapp2.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "Account")
+@Table(name = "Accounts")
 public class Account {
 
     @Id
@@ -42,15 +41,5 @@ public class Account {
         this.clientID = clientID;
         this.balance = balance;
         this.withdrawAllowed = withdrawAllowed;
-    }
-    @Override
-    public String toString() {
-        return "Account{" +
-                "id='" + id + '\'' +
-                ", accountType=" + accountType +
-                ", clientID='" + clientID + '\'' +
-                ", balance=" + balance +
-                ", withdrawAllowed=" + withdrawAllowed +
-                '}';
     }
 }

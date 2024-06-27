@@ -2,7 +2,6 @@ package kz.jusansingularity.springcore.solidbankapp2.util;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter

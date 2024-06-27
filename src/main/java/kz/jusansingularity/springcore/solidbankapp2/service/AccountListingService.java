@@ -8,6 +8,7 @@ import kz.jusansingularity.springcore.solidbankapp2.model.AccountWithdraw;
 
 public interface AccountListingService {
     Account getClientAccount(String clientID, String accountID);
+    Account getClientAccount(String accountID);
     AccountWithdraw getClientWithdrawAccount(String clientID, String accountID);
     List<Account> getClientAccounts(String clientID);
     List<Account> getClientAccountsByType(String clientID, AccountType accountType);

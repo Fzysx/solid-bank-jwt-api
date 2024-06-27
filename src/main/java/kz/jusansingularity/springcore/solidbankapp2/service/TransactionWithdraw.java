@@ -17,11 +17,15 @@ public class TransactionWithdraw {
         double  balanceBeforeTransaction = account.getBalance();
         accountWithdrawService.withdraw(account, amount);
         double  balanceAfterTransaction = account.getBalance();
+        String accountFromId = "-";
+        String accountToId = "-";
 
         memoryTransactionDAO.save(new Transaction(TransactionType.WITHDRAW,
                 String.valueOf(id),
-                account.getClientID(),
-                amount, account,
+                amount,
+                account,
+                accountFromId,
+                accountToId,
                 balanceBeforeTransaction,
                 balanceAfterTransaction));
 

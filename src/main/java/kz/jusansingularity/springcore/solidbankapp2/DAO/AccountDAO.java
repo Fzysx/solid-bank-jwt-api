@@ -1,9 +1,10 @@
 package kz.jusansingularity.springcore.solidbankapp2.DAO;
 
-import java.util.List;
 import kz.jusansingularity.springcore.solidbankapp2.model.Account;
 import kz.jusansingularity.springcore.solidbankapp2.model.AccountType;
 import kz.jusansingularity.springcore.solidbankapp2.model.AccountWithdraw;
+
+import java.util.List;
 
 public interface AccountDAO {
     List<Account> getClientAccounts(String clientID);
@@ -13,4 +14,5 @@ public interface AccountDAO {
     List<Account> getClientAccountsByType(String clientID, AccountType accountType);
     AccountWithdraw getClientWithdrawAccount(String clientID, String accountID);
     Account getClientAccount(String clientID, String accountID);
+    Account getClientAccount(String accountID);
 }

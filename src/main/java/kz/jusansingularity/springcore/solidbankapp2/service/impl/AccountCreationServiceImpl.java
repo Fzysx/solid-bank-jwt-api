@@ -1,7 +1,6 @@
 package kz.jusansingularity.springcore.solidbankapp2.service.impl;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import kz.jusansingularity.springcore.solidbankapp2.DAO.AccountDAO;
 import kz.jusansingularity.springcore.solidbankapp2.model.AccountType;
@@ -9,7 +8,6 @@ import kz.jusansingularity.springcore.solidbankapp2.model.CheckingAccount;
 import kz.jusansingularity.springcore.solidbankapp2.model.FixedAccount;
 import kz.jusansingularity.springcore.solidbankapp2.model.SavingAccount;
 import kz.jusansingularity.springcore.solidbankapp2.service.AccountCreationService;
-import kz.jusansingularity.springcore.solidbankapp2.service.AccountListingService;
 
 
 @Service

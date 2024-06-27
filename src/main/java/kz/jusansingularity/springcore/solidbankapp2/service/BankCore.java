@@ -1,9 +1,7 @@
 package kz.jusansingularity.springcore.solidbankapp2.service;
 
 import kz.jusansingularity.springcore.solidbankapp2.model.AccountType;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -7,9 +7,12 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CreateTransactionDTO {
+public class CreateTransferDTO {
 
-    @Numeric (message = "Invalid amount value. Input valid amount value, please")
+    @Numeric(message = "Invalid amount value. Input valid amount value, please")
     @NotEmpty(message = "Amount value should not be empty")
     private String amount;
+
+    @NotEmpty(message = "Amount value should not be empty")
+    private String destinationAccountId;
 }
